@@ -154,6 +154,26 @@ def safe_trip_dates(booking_date: str, travel_date: str) -> int:
     return (travel - booking).days
 
 
+def validate_rps_choice(choice: str) -> str:
+    normalized = choice.strip().lower()
+    mapping = {"rock": "Rock", "paper": "Paper", "scissors": "Scissors"}
+    if normalized not in mapping:
+        raise ValueError("Enter only Rock, Paper, or Scissors.")
+    return mapping[normalized]
+
+
+def validate_ticket_count(raw_value: str, section_name: str, capacity: int) -> int:
+    cleaned = raw_value.strip()
+    if not re.fullmatch(r"\d+", cleaned):
+        raise ValueError(f"Section {section_name}: enter a whole number 0 to {capacity}.")
+    count = int(cleaned)
+    if count < 0 or count > capacity:
+        raise ValueError(
+            f"Section {section_name}: tickets sold must be between 0 and {capacity}."
+        )
+    return count
+
+
 # ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
@@ -178,6 +198,8 @@ tabs = st.tabs(
         "Regex: US ZIP",
         "File Upload Validation",
         "Semantic Validation",
+        "RPS Validation",
+        "Theater Revenue",
     ]
 )
 
@@ -400,6 +422,92 @@ with tabs[8]:
                 st.success(f"Trip accepted. Lead time: {days} days")
             except Exception as exc:
                 st.warning(f"Rejected input: {exc}")
+
+with tabs[9]:
+    st.subheader("10) Rock, Paper, Scissors Input Validation")
+    st.caption("Scenario: accept only Rock, Paper, or Scissors (case-insensitive)")
+
+    rps_input = st.text_input("Enter your choice", value="rock", key="rps_choice")
+
+    a, b = st.columns(2)
+    with a:
+        st.markdown("**No validation**")
+        if st.button("Run unsafe RPS input", key="run_unsafe_rps"):
+            st.success(f"You entered: {rps_input}")
+            st.error("Risk: invalid values like `roc`, `stone`, or blank are accepted.")
+
+    with b:
+        st.markdown("**With case-insensitive validation**")
+        if st.button("Run safe RPS input", key="run_safe_rps"):
+            try:
+                choice = validate_rps_choice(rps_input)
+                st.success(f"Validated choice: {choice}")
+            except Exception as exc:
+                st.warning(f"Rejected input: {exc}")
+
+with tabs[10]:
+    st.subheader("11) Theater Seating Revenue with Input Validation")
+    st.markdown(
+        """
+**Program Description **  
+A dramatic theater has three seating sections:
+- Section A: 300 seats, ticket price is $20
+- Section B: 500 seats, ticket price is $15
+- Section C: 200 seats, ticket price is $10
+
+The Program asks for how many tickets were sold in each section.
+Then calculate and display:
+- Revenue from Section A, B, and C
+- Total revenue from all sections
+
+Input validation rules:
+- Each value must be a whole number
+- Each value must be at least 0
+- Each value cannot exceed that section's seat capacity
+"""
+    )
+
+    section_prices = {"A": 20, "B": 15, "C": 10}
+    section_caps = {"A": 300, "B": 500, "C": 200}
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        sold_a_raw = st.text_input(
+            "Section A tickets sold (0-300)", value="120", key="theater_a"
+        )
+    with c2:
+        sold_b_raw = st.text_input(
+            "Section B tickets sold (0-500)", value="200", key="theater_b"
+        )
+    with c3:
+        sold_c_raw = st.text_input(
+            "Section C tickets sold (0-200)", value="80", key="theater_c"
+        )
+
+    if st.button("Calculate theater revenue", key="run_theater_revenue"):
+        try:
+            sold_a = validate_ticket_count(sold_a_raw, "A", section_caps["A"])
+            sold_b = validate_ticket_count(sold_b_raw, "B", section_caps["B"])
+            sold_c = validate_ticket_count(sold_c_raw, "C", section_caps["C"])
+
+            rev_a = sold_a * section_prices["A"]
+            rev_b = sold_b * section_prices["B"]
+            rev_c = sold_c * section_prices["C"]
+            total_rev = rev_a + rev_b + rev_c
+
+            r1, r2, r3, r4 = st.columns(4)
+            with r1:
+                st.metric("Section A Revenue", f"${rev_a:,}")
+            with r2:
+                st.metric("Section B Revenue", f"${rev_b:,}")
+            with r3:
+                st.metric("Section C Revenue", f"${rev_c:,}")
+            with r4:
+                st.metric("Total Revenue", f"${total_rev:,}")
+
+            st.success("Inputs are valid and revenue has been calculated.")
+        except Exception as exc:
+            st.warning(f"Validation error: {exc}")
 
 st.divider()
 st.subheader("Why validation is required")

@@ -3,6 +3,14 @@
 This app demonstrates why input validation is essential in software design.
 It shows side-by-side behavior for unsafe and validated flows.
 
+## Small guide: how to use the tool
+
+1. Open the app and select a tab at the top.
+2. Enter sample, invalid, or malicious input values.
+3. Run the unsafe action first and observe the result.
+4. Run the validated action and compare the output.
+5. Discuss which validation strategy blocked or corrected the input.
+
 ## Covered examples
 
 - Type checks

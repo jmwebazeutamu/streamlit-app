@@ -186,6 +186,17 @@ st.info(
     "Teaching goal: help students connect validation to reliability, security, and data quality."
 )
 
+with st.expander("Quick Guide: How to Use This Tool"):
+    st.markdown(
+        """
+1. Pick any tab (example topic) at the top.
+2. Enter test input values.
+3. Run the **unsafe** version first to see the risk.
+4. Run the **validated** version to compare behavior.
+5. Read the message shown (`success`, `warning`, or `error`) and explain what rule was applied.
+"""
+    )
+
 
 tabs = st.tabs(
     [

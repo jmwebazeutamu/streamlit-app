@@ -1,8 +1,10 @@
 import os
 import re
 from datetime import datetime
+from pathlib import Path
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 
 st.set_page_config(page_title="Why Input Validation Matters", page_icon="✅", layout="wide")
@@ -521,13 +523,16 @@ Input validation rules:
             st.warning(f"Validation error: {exc}")
 
 st.divider()
-st.subheader("Why validation is required")
-st.markdown(
-    """
-1. Prevents crashes from unexpected types and malformed data.
-2. Protects against security issues such as injection and privilege abuse.
-3. Preserves data quality for analytics and downstream systems.
-4. Produces clear feedback to users instead of silent corruption.
-5. Enforces business rules consistently across the app.
-"""
+st.markdown("## Input Validation In-Class-Assignment, Due 3/5/2026")
+st.markdown("**Work in Groups of 2**")
+st.markdown("**Before your print your form, make sure all the code is visible in the forms**")
+st.write(
+    "Open the class activity form below, complete the validation exercise, then return to this app to discuss your decisions."
 )
+form_path = Path(__file__).resolve().parent / "validation_exercise_final.html"
+#st.caption("Reference file (app root): ./validation_exercise_final.html")
+if form_path.exists():
+    with st.expander("Open validation activity form", expanded=False):
+        components.html(form_path.read_text(encoding="utf-8"), height=1200, scrolling=True)
+else:
+    st.error("validation_exercise_final.html was not found in the app root.")

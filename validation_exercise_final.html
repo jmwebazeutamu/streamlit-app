@@ -4,24 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Input Validation Exercise — UniConnect Student Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0d1b2a;
-    --navy-mid: #162235;
-    --navy-light: #1e3048;
-    --amber: #e8a820;
-    --amber-light: #f5c842;
-    --amber-dim: #a0720f;
-    --cream: #f8f2e4;
-    --cream-dark: #ede5d0;
-    --muted: #8fa3ba;
-    --text: #dde6ef;
-    --red: #d94f3d;
-    --green: #3a9e6b;
+    --navy: #ffffff;
+    --navy-mid: #ffffff;
+    --navy-light: #f4f6f8;
+    --amber: #1f4e79;
+    --amber-light: #2d6ca3;
+    --amber-dim: #153751;
+    --cream: #111827;
+    --cream-dark: #374151;
+    --muted: #6b7280;
+    --text: #1f2937;
+    --red: #b91c1c;
+    --green: #15803d;
     --mono: 'JetBrains Mono', monospace;
-    --serif: 'Source Serif 4', Georgia, serif;
-    --display: 'Playfair Display', Georgia, serif;
+    --serif: 'Inter', 'Segoe UI', Arial, sans-serif;
+    --display: 'Inter', 'Segoe UI', Arial, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -206,7 +206,7 @@
     border-radius: 4px;
     padding: 12px 16px;
     font-size: 13px;
-    color: #7ccfa4;
+    color: #166534;
     font-family: var(--mono);
   }
 
@@ -306,10 +306,10 @@
   }
   .field-group input,
   .field-group select {
-    background: var(--navy-mid);
-    border: 1.5px solid rgba(255,255,255,0.1);
+    background: #ffffff;
+    border: 1.5px solid #4b5563;
     border-radius: 4px;
-    color: var(--text);
+    color: #111827;
     font-family: var(--serif);
     font-size: 14px;
     padding: 9px 13px;
@@ -319,8 +319,8 @@
     appearance: none;
   }
   .field-group input:focus,
-  .field-group select:focus { border-color: var(--amber); }
-  .field-group input::placeholder { color: rgba(143,163,186,0.45); font-style: italic; }
+  .field-group select:focus { border-color: #111827; }
+  .field-group input::placeholder { color: #6b7280; font-style: italic; }
   .field-hint {
     font-size: 11.5px;
     color: rgba(143,163,186,0.6);
@@ -413,10 +413,10 @@
   }
   .type-cell { padding: 10px 12px; min-width: 130px; }
   .type-select {
-    background: var(--navy);
-    border: 1.5px solid rgba(255,255,255,0.1);
+    background: #ffffff;
+    border: 1.5px solid #4b5563;
     border-radius: 4px;
-    color: var(--text);
+    color: #111827;
     font-family: var(--mono);
     font-size: 11.5px;
     padding: 5px 8px;
@@ -426,7 +426,7 @@
     cursor: pointer;
     appearance: none;
   }
-  .type-select:focus { border-color: var(--amber); }
+  .type-select:focus { border-color: #111827; }
   .add-type-btn {
     font-family: var(--mono);
     font-size: 10px;
@@ -445,10 +445,10 @@
   .pseudo-textarea {
     width: 100%;
     min-height: 130px;
-    background: var(--navy);
-    border: 1.5px solid rgba(255,255,255,0.08);
+    background: #ffffff;
+    border: 1.5px solid #4b5563;
     border-radius: 4px;
-    color: #a8d8ff;
+    color: #111827;
     font-family: var(--mono);
     font-size: 12px;
     line-height: 1.7;
@@ -459,16 +459,16 @@
     transition: border-color 0.2s;
     -webkit-font-smoothing: antialiased;
   }
-  .pseudo-textarea:focus { border-color: var(--amber); }
-  .pseudo-textarea::placeholder { color: rgba(100,140,165,0.5); font-style: italic; }
+  .pseudo-textarea:focus { border-color: #111827; }
+  .pseudo-textarea::placeholder { color: #6b7280; font-style: italic; }
   .justify-cell { padding: 10px 12px; min-width: 200px; }
   .justify-textarea {
     width: 100%;
     min-height: 130px;
-    background: var(--navy);
-    border: 1.5px solid rgba(255,255,255,0.08);
+    background: #ffffff;
+    border: 1.5px solid #4b5563;
     border-radius: 4px;
-    color: var(--text);
+    color: #111827;
     font-family: var(--serif);
     font-size: 13px;
     line-height: 1.65;
@@ -477,7 +477,7 @@
     outline: none;
     transition: border-color 0.2s;
   }
-  .justify-textarea:focus { border-color: var(--amber); }
+  .justify-textarea:focus { border-color: #111827; }
   .justify-textarea::placeholder { color: rgba(143,163,186,0.4); font-style: italic; }
 
   .worksheet-table tbody tr:nth-child(odd)  .field-cell,

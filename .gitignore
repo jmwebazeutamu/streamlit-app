@@ -15,3 +15,7 @@ venv/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# SRIS security audit — never commit the breach artifact or extracted PII/secrets
+SRIS_NEW_LV_2026-06-02.zip
+testing/sris_audit/

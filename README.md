@@ -1,32 +1,18 @@
-# Input Validation Teaching App (Streamlit)
+# ITP100 Interactive Course App
 
-Single-page Streamlit app for Software Design classes.
+This Streamlit app now uses multipage navigation.
 
-It demonstrates unsafe vs validated handling for common input-validation cases:
-- type checks
-- range checks
-- format checks
-- allowlist/denylist checks
-- SQL injection-safe query pattern
-- ZIP regex checks
-- file upload validation
-- semantic (cross-field) validation
+## Pages
 
-## Setup
+- Home
+- Module 7 - Input Validation
+- Module 8 - Arrays (Gaddis Chapter 8 interactive practice)
+
+## Run
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-## Run
-
-```bash
 streamlit run app.py
 ```
-
-## Notes
-
-- Entry point: `app.py`
-- No database or authentication required
